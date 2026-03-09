@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <div class="nav-brand">
+    <a href="#" class="back-btn" (click)="goBack($event)" title="Go Back">⬅️ Back</a>
+    Hostel Reporter
+  </div>
+  <div class="nav-links">
+    <a routerLink="/login" *ngIf="!isLoggedIn()" routerLinkActive="active">Login</a>
+    <a routerLink="/register" *ngIf="!isLoggedIn()" routerLinkActive="active">Register</a>
+    <span class="user-greeting" *ngIf="isLoggedIn()">Hi, {{getUsername()}}!</span>
+    <a routerLink="/complaints" *ngIf="isLoggedIn()" routerLinkActive="active">View Complaints</a>
+    <a href="#" class="logout-btn" (click)="logout($event)" *ngIf="isLoggedIn()">Logout</a>
+  </div>
+</nav>
+<main class="container">
+  <router-outlet></router-outlet>
+</main>

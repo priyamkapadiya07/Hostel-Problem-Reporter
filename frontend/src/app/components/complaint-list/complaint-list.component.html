@@ -1,0 +1,44 @@
+<div class="list-container">
+    <div class="header-section">
+        <h2>All Complaints</h2>
+
+        <div class="filter-section">
+            <label for="categoryFilter">Filter by Category:</label>
+            <select id="categoryFilter" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+                <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div *ngIf="isLoading" class="loading-state">Loading complaints...</div>
+
+    <div *ngIf="!isLoading && filteredComplaints.length === 0" class="empty-state">
+        <p>No complaints found for this category.</p>
+    </div>
+
+    <div class="cards-grid" *ngIf="filteredComplaints.length > 0">
+        <div class="complaint-card" *ngFor="let c of filteredComplaints">
+            <div class="card-header">
+                <h3 class="card-title">{{c.title}}</h3>
+                <span class="status-badge" [ngClass]="c.status">{{c.status}}</span>
+            </div>
+
+            <div class="card-meta">
+                <span class="category-tag">{{c.category}}</span>
+                <span class="date">{{c.created_at | date:'mediumDate'}}</span>
+            </div>
+
+            <p class="card-description">{{c.description}}</p>
+
+            <div *ngIf="c.image_url" class="card-attachment">
+                <a [href]="'http://localhost:3000' + c.image_url" target="_blank">
+                    <img [src]="'http://localhost:3000' + c.image_url" alt="Attachment" class="thumbnail">
+                </a>
+            </div>
+
+            <div class="card-footer" *ngIf="c.student_name">
+                <small>Reported by: <strong>{{c.student_name}}</strong></small>
+            </div>
+        </div>
+    </div>
+</div>

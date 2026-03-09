@@ -1,0 +1,128 @@
+/* Modern global styles */
+
+:root {
+  --primary: #4F46E5;
+  --primary-hover: #4338CA;
+  --bg-color: #F3F4F6;
+  --text-dark: #1F2937;
+  --text-light: #6B7280;
+  --border-color: #E5E7EB;
+  --navbar-bg: #FFFFFF;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-dark);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--navbar-bg);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.back-btn {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background-color: var(--bg-color);
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  background-color: #e5e7eb;
+  color: var(--primary);
+}
+
+.nav-links a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--primary);
+}
+
+.user-greeting {
+  margin-left: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: #EEF2FF;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+}
+
+.logout-btn {
+  color: #DC2626 !important;
+}
+
+.logout-btn:hover {
+  color: #B91C1C !important;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 15px;
+  }
+  .nav-brand {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+  }
+  .nav-links a, .user-greeting {
+    margin-left: 0;
+  }
+  .container {
+    padding: 1rem;
+  }
+}
+
+
+/* Base button styles since Angular component encapsulates styles */
+.btn-primary {
+  background-color: var(--primary) !important;
+}
+.btn-primary:hover {
+  background-color: var(--primary-hover) !important;
+}
